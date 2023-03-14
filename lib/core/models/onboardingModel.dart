@@ -12,27 +12,27 @@ class UnbordingContent {
 
 List<UnbordingContent> contents = [
   UnbordingContent(
-    title: Label.reqres,
+    title: Label.getStarted,
     subtitle: Label.testYourFrontndAgainstRealAPI,
-    image: 'assets/images/screen1.png',
+    image: 'assets/images/reqresLogo.png',
     description: Label.testYourFrontndAgainstRealAPI,
   ),
   UnbordingContent(
     title: Label.fakeData,
     subtitle: Label.fakeDataDisc,
-    image: 'assets/images/screen2.png',
+    image: 'assets/images/reqresLogo.png',
     description: Label.fakeDataDisc,
   ),
   UnbordingContent(
     title: Label.realResponses,
     subtitle: Label.realResponsesDisc,
-    image: 'assets/images/screen3.png',
+    image: 'assets/images/reqresLogo.png',
     description: Label.realResponsesDisc,
   ),
   UnbordingContent(
     title: Label.alwaysOn,
     subtitle: Label.alwaysOnDisc,
-    image: 'assets/images/screen4.png',
+    image: 'assets/images/reqresLogo.png',
     description: Label.alwaysOnDisc,
   ),
 ];

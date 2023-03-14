@@ -5,7 +5,7 @@ import 'package:rest_api_demo/constants/ui_settings.dart';
 class MButton extends StatelessWidget {
   final String text;
   final Color? textColor;
-  final Function onClick;
+  final VoidCallback onClick;
   final bool loading;
   final bool isLeading;
   final bool isTrailing;
@@ -47,7 +47,7 @@ class MButton extends StatelessWidget {
         borderRadius: const BorderRadius.all(
           Radius.circular(30),
         ),
-        onTap: loading ? null : () => onClick,
+        onTap: loading ? null : onClick,
         child: Container(
           width: isFullWidth ? MediaQuery.of(context).size.width : null,
           padding: EdgeInsets.symmetric(vertical: 16, horizontal: isFullWidth ? 0 : subPadding),
@@ -95,8 +95,11 @@ class MButton extends StatelessWidget {
                             : const EdgeInsets.all(0),
                         child: Text(
                           text,
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600, color: textColor ?? PsColors.white),
+                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: textColor ?? PsColors.white,
+                              ),
                         ),
                       ),
                       isTrailing ? const SizedBox(width: subPadding) : const SizedBox.shrink(),

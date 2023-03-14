@@ -33,7 +33,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
               Center(
                 child: SizedBox(
                   height: 100,
-                  child: Image.asset('assets/images/primary.png'),
+                  child: Image.asset('assets/images/reqresLogo.png'),
                 ),
               ),
               const SizedBox(height: extraPadding),
@@ -41,7 +41,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
               Text(
                 Label.reqres.toString(),
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline1?.copyWith(
+                style: Theme.of(context).textTheme.bodyText1?.copyWith(
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
                     ),

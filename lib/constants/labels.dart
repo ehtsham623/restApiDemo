@@ -2,6 +2,7 @@ class Label {
   static const String reqres = 'Reqres';
   static const String testYourFrontndAgainstRealAPI = 'Test your front-end against a real API';
   static const String continu = 'Continue';
+  static const String getStarted = 'Get started';
   static const String realResponses = 'Real responses';
   static const String realResponsesDisc =
       'Develop with real response codes. GET, POST, PUT & DELETE supported.';
