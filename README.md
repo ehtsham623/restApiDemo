@@ -2,8 +2,8 @@
 
 A new Flutter project which demonstrate usages of rest api using packages such as
 
-- `Dio`
-- `Provider`
+- `Dio` - For making api calls
+- `Provider` - For state managemnet
 
 This project also contains proper structure to maintian and add more to the project.
 
