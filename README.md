@@ -9,11 +9,12 @@ This project also contains proper structure to maintian and add more to the proj
 
 ## Getting Started
 
-Install all dependencies using `***flutter pug get`
+Install all dependencies using `flutter pug get`
 
 This project is a starting point for a Flutter application.
 
 Project utilize https://reqres.in/ api to fetch users data
 
 This project has two branches `dev` `main`
+
 `main` will have latest stable build
