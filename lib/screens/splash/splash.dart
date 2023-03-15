@@ -15,7 +15,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      Navigator.pushNamedAndRemoveUntil(context, RoutePaths.home, (route) => false);
+      // Navigator.pushNamedAndRemoveUntil(context, RoutePaths.home, (route) => false);
     });
     super.initState();
   }

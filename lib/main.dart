@@ -22,8 +22,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Rest api demo',
       theme: ThemeData(
+        brightness: Brightness.light,
         primarySwatch: Colors.blue,
       ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.blue,
+      ),
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       onGenerateRoute: router.generateRoute,

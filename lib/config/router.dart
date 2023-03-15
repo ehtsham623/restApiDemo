@@ -8,7 +8,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case '/':
       return MaterialPageRoute<dynamic>(
-          settings: const RouteSettings(name: RoutePaths.onboarding),
+          settings: const RouteSettings(name: RoutePaths.splash),
           builder: (BuildContext context) {
             return const OnBoarding();
           });

@@ -74,7 +74,7 @@ class MButton extends StatelessWidget {
                           ? assetImage == null
                               ? Icon(
                                   iconData,
-                                  color: iconColor ?? PsColors.white,
+                                  color: iconColor ?? Theme.of(context).colorScheme.primary,
                                   size: 22,
                                 )
                               : Image.asset(
@@ -98,7 +98,6 @@ class MButton extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                color: textColor ?? PsColors.white,
                               ),
                         ),
                       ),
@@ -107,7 +106,7 @@ class MButton extends StatelessWidget {
                           ? assetImage == null
                               ? Icon(
                                   iconData,
-                                  color: iconColor ?? PsColors.white,
+                                  color: iconColor ?? Theme.of(context).colorScheme.primary,
                                   size: 22,
                                 )
                               : Image.asset(

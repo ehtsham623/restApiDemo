@@ -36,7 +36,6 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: PsColors.white,
       body: Padding(
         padding: const EdgeInsets.only(top: extraPadding, bottom: subPadding),
         child: ListView(
@@ -51,7 +50,6 @@ class _OnBoardingState extends State<OnBoarding> {
                     'assets/images/reqresLogo.png',
                     height: 46,
                     width: 79,
-                    color: PsColors.primary,
                   ),
                 ],
               ),
@@ -61,12 +59,11 @@ class _OnBoardingState extends State<OnBoarding> {
               child: SizedBox(
                 width: 250,
                 height: MediaQuery.of(context).size.height * 0.10,
-                child: Text(contents[currentIndex].title,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700,
-                        )),
+                child: Text(
+                  contents[currentIndex].title,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
               ),
             ),
             const SizedBox(height: mainPadding),
@@ -79,16 +76,12 @@ class _OnBoardingState extends State<OnBoarding> {
                   child: Text(
                     contents[currentIndex].description,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                        ),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ),
             ),
-            Container(
-              color: PsColors.white,
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.30,
               child: PageView.builder(
                   scrollDirection: Axis.horizontal,
@@ -100,7 +93,6 @@ class _OnBoardingState extends State<OnBoarding> {
                   },
                   itemBuilder: (context, index) {
                     return Container(
-                      color: PsColors.white,
                       height: double.infinity,
                       alignment: Alignment.center, // This is needed
                       child: Image.asset(
@@ -128,19 +120,18 @@ class _OnBoardingState extends State<OnBoarding> {
                             )),
                   ),
                   Container(
-                      constraints: const BoxConstraints(maxWidth: 120),
-                      child: MButton(
-                          bgColor: PsColors.white,
-                          borderColor: PsColors.primary,
-                          textColor: PsColors.primary,
-                          text: currentIndex == contents.length - 1 ? Label.continu : "Skip",
-                          onClick: () {
-                            if (currentIndex == contents.length - 1) {
-                              Navigator.pushNamedAndRemoveUntil(context, RoutePaths.splash, (route) => false);
-                            }
-                            controller?.nextPage(
-                                duration: const Duration(milliseconds: 500), curve: Curves.ease);
-                          })),
+                    constraints: const BoxConstraints(maxWidth: 120),
+                    child: MButton(
+                      borderColor: PsColors.primary,
+                      text: currentIndex == contents.length - 1 ? Label.continu : "Skip",
+                      onClick: () {
+                        if (currentIndex == contents.length - 1) {
+                          Navigator.pushNamedAndRemoveUntil(context, RoutePaths.splash, (route) => false);
+                        }
+                        controller?.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.ease);
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
