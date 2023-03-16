@@ -38,36 +38,33 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.only(top: extraPadding, bottom: subPadding),
-        child: ListView(
-          controller: scrollController,
+      appBar: AppBar(
+        title: Text(
+          contents[currentIndex].title,
+          style: Theme.of(context).textTheme.bodyText1!,
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: extraPadding),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/reqresLogo.png',
-                    height: 46,
-                    width: 79,
-                    color: PsColors.mainColor,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: mainPadding),
-            Center(
-              child: SizedBox(
-                width: 250,
-                height: MediaQuery.of(context).size.height * 0.10,
-                child: Text(
-                  contents[currentIndex].title,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
+            Expanded(
+              child: PageView.builder(
+                scrollDirection: Axis.horizontal,
+                controller: controller,
+                itemCount: contents.length,
+                onPageChanged: (int index) {
+                  currentIndex = index;
+                  setState(() {});
+                },
+                itemBuilder: (context, index) {
+                  return Center(
+                    child: Image.asset(
+                      contents[currentIndex].image,
+                      width: 200,
+                      color: PsColors.mainDarkColor,
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(height: mainPadding),
@@ -80,37 +77,12 @@ class _OnBoardingState extends State<OnBoarding> {
                   child: Text(
                     contents[currentIndex].description,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 26),
                   ),
                 ),
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.30,
-              child: PageView.builder(
-                  scrollDirection: Axis.horizontal,
-                  controller: controller,
-                  itemCount: contents.length,
-                  onPageChanged: (int index) {
-                    currentIndex = index;
-                    setState(() {});
-                  },
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: double.infinity,
-                      alignment: Alignment.center, // This is needed
-                      child: Image.asset(
-                        contents[currentIndex].image,
-                        fit: BoxFit.contain,
-                        width: 250,
-                        color: PsColors.mainDarkColor,
-                      ),
-                    );
-                  }),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.12,
-            ),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: mainPadding),
               child: Row(

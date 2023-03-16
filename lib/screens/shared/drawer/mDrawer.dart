@@ -22,30 +22,21 @@ class MDrawer extends StatelessWidget {
                 color: PsColors.mainColor,
               ),
             ),
-            const SizedBox(height: extraPadding),
-            Center(
-              child: Text(
-                Label.reqres,
-                style: Theme.of(context).textTheme.headline1!.copyWith(
-                    fontSize: 16, fontWeight: FontWeight.w500, color: PsColors.textPrimaryDarkColor),
+            const SizedBox(height: 120),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: extraPadding),
+              child: MButton(
+                onClick: () {
+                  changeColor(context);
+                },
+                text: DynamicTheme.of(context).themeMode == ThemeMode.dark ? Label.turnLight : Label.goDrak,
+                textColor: PsColors.textPrimaryColor,
+                loading: false,
+                bgColor: PsColors.transparent,
+                borderColor: PsColors.borderColor,
               ),
             ),
-            SizedBox(
-              height: 50,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: extraPadding),
-                child: MButton(
-                  onClick: () {
-                    changeColor(context);
-                  },
-                  text: Label.changeTheme,
-                  textColor: PsColors.textPrimaryColor,
-                  loading: false,
-                  bgColor: PsColors.transparent,
-                  borderColor: PsColors.mainColor,
-                ),
-              ),
-            ),
+            const SizedBox(height: mainPadding),
             const Spacer(),
             Center(
               child: Text(

@@ -11,5 +11,7 @@ class Label {
   static const String alwaysOn = 'Always-on';
   static const String changeTheme = 'Change Theme';
   static const String version = 'Version';
+  static const String goDrak = 'Go Drak';
+  static const String turnLight = 'Turn light';
   static const String alwaysOnDisc = '24/7 free access in your development phases. Go nuts.';
 }
