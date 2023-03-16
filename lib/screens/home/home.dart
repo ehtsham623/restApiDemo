@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rest_api_demo/constants/labels.dart';
 import 'package:rest_api_demo/core/models/userModel.dart';
 import 'package:rest_api_demo/core/providers/homeProvider.dart';
 import 'package:rest_api_demo/screens/home/userListItem.dart';
@@ -27,6 +28,12 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          Label.users,
+          style: Theme.of(context).textTheme.bodyText1!,
+        ),
+      ),
       body: SafeArea(
         child: SizedBox(
           height: double.infinity,
@@ -37,21 +44,26 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ? const MCircularIndicator()
                   : context.watch<HomeProvider>().userModel == null
                       ? const NoDataFoundWidget()
-                      : Expanded(
-                          child: ListView.builder(
-                            itemCount: context.watch<HomeProvider>().userModel?.data?.length,
-                            itemBuilder: (context, index) {
-                              return UserListItem(
-                                user: context.watch<HomeProvider>().userModel?.data?[index],
-                              );
-                            },
-                          ),
-                        ),
+                      : usersListWidget(context),
             ],
           ),
         ),
       ),
       drawer: const MDrawer(),
+    );
+  }
+
+  ///show all user in list
+  Widget usersListWidget(BuildContext? context) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: context!.watch<HomeProvider>().userModel?.data?.length,
+        itemBuilder: (context, index) {
+          return UserListItem(
+            user: context.watch<HomeProvider>().userModel?.data?[index],
+          );
+        },
+      ),
     );
   }
 }

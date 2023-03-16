@@ -8,6 +8,7 @@ import 'package:rest_api_demo/services/newtorks/requests.dart';
 import 'package:rest_api_demo/services/newtorks/urls.dart';
 
 class HomeRepo {
+  ///user api --> this api will get all users from [usersUrl]
   static Future getUsersApi(BuildContext context) async {
     try {
       Request req = Request(usersUrl, null, null);

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rest_api_demo/config/ps_colors.dart';
+import 'package:rest_api_demo/constants/ui_settings.dart';
 import 'package:rest_api_demo/core/models/userModel.dart';
 
 class UserListItem extends StatelessWidget {
@@ -7,20 +9,8 @@ class UserListItem extends StatelessWidget {
   const UserListItem({super.key, required this.user});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: subPadding, horizontal: mainPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,78 +29,60 @@ class UserListItem extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(mainPadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   user!.firstName! + user!.lastName!,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.headline5!.copyWith(fontSize: 24),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   user!.email!,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.grey[600],
-                  ),
+                  style: Theme.of(context).textTheme.headline2!.copyWith(fontSize: 18),
                 ),
                 const SizedBox(height: 16),
                 Row(
                   children: [
-                    Icon(Icons.phone, color: Colors.grey[600], size: 20),
+                    Icon(Icons.phone, color: PsColors.mainColor, size: 20),
                     const SizedBox(width: 8),
                     Text(
                       '+923057310219',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[600],
-                      ),
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16),
                     ),
                   ],
                 ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Icon(Icons.location_on, color: Colors.grey[600], size: 20),
+                    Icon(Icons.location_on, color: PsColors.mainColor, size: 20),
                     const SizedBox(width: 8),
                     Text(
                       "Jinnah colony Lahore pakistan",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[600],
-                      ),
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16),
                     ),
                   ],
                 ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Icon(Icons.public, color: Colors.grey[600], size: 20),
+                    Icon(Icons.public, color: PsColors.mainColor, size: 20),
                     const SizedBox(width: 8),
                     Text(
-                      '${user!.firstName!}@exaample.com',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[600],
-                      ),
+                      '${user!.firstName!}.com',
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16),
                     ),
                   ],
                 ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Icon(Icons.business, color: Colors.grey[600], size: 20),
+                    Icon(Icons.business, color: PsColors.mainColor, size: 20),
                     const SizedBox(width: 8),
                     Text(
                       'Ryalize',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[600],
-                      ),
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16),
                     ),
                   ],
                 ),

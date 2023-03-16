@@ -11,6 +11,7 @@ class Label {
   static const String alwaysOn = 'Always-on';
   static const String changeTheme = 'Change Theme';
   static const String version = 'Version';
+  static const String users = 'Users';
   static const String goDrak = 'Go Drak';
   static const String noDataFound = 'No Data Found';
   static const String somethingWentWrong = 'Something Went Wrong';

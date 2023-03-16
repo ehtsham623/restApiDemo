@@ -6,6 +6,7 @@ class HomeProvider extends ChangeNotifier {
   bool isLoadingUser = false;
   UserModel? userModel;
 
+  ///method to [getUsersApi] and save in state [userModel]
   Future getUser({required BuildContext context}) async {
     isLoadingUser = true;
     notifyListeners();
