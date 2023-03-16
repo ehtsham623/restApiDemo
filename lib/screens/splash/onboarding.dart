@@ -5,6 +5,7 @@ import 'package:rest_api_demo/constants/labels.dart';
 import 'package:rest_api_demo/constants/route_paths.dart';
 import 'package:rest_api_demo/constants/ui_settings.dart';
 import 'package:rest_api_demo/core/models/onboardingModel.dart';
+import 'package:rest_api_demo/screens/shared/drawer/mDrawer.dart';
 import 'package:rest_api_demo/screens/shared/mButton.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -37,6 +38,7 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.only(top: extraPadding, bottom: subPadding),
         child: ListView(
@@ -144,6 +146,7 @@ class _OnBoardingState extends State<OnBoarding> {
           ],
         ),
       ),
+      drawer: const MDrawer(),
     );
   }
 

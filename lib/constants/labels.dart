@@ -9,5 +9,7 @@ class Label {
   static const String fakeData = 'Fake Data';
   static const String fakeDataDisc = 'No more tedious sample data creation, weve got it covered.';
   static const String alwaysOn = 'Always-on';
+  static const String changeTheme = 'Change Theme';
+  static const String version = 'Version';
   static const String alwaysOnDisc = '24/7 free access in your development phases. Go nuts.';
 }

@@ -24,28 +24,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     PsColors.loadColor(true);
     return DynamicTheme(
-        defaultBrightness: Brightness.light,
-        data: (Brightness brightness) {
-          if (brightness == Brightness.light) {
-            return themeData(ThemeData.light());
-          } else {
-            return themeData(ThemeData.dark());
-          }
-        },
-        themedWidgetBuilder: (BuildContext context, ThemeData theme) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Rest api demo',
-            theme: theme,
-            initialRoute: '/',
-            onGenerateRoute: router.generateRoute,
-            builder: (context, child) {
-              return MediaQuery(
-                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-                child: child!,
-              );
-            },
-          );
-        });
+      defaultThemeMode: ThemeMode.system,
+      loadThemeOnStart: true,
+      data: (mode) {
+        if (mode == ThemeMode.light) {
+          return themeData(ThemeData.light());
+        } else {
+          return themeData(ThemeData.dark());
+        }
+      },
+      themedWidgetBuilder: (BuildContext context, ThemeMode mode, ThemeData? theme) {
+        return MaterialApp(
+          themeMode: mode,
+          debugShowCheckedModeBanner: false,
+          title: 'Rest api demo',
+          theme: theme,
+          initialRoute: '/',
+          onGenerateRoute: router.generateRoute,
+          builder: (context, child) {
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: child!,
+            );
+          },
+        );
+      },
+    );
   }
 }

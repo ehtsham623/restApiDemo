@@ -50,7 +50,7 @@ class MButton extends StatelessWidget {
         onTap: loading ? null : onClick,
         child: Container(
           width: isFullWidth ? MediaQuery.of(context).size.width : null,
-          padding: EdgeInsets.symmetric(vertical: 16, horizontal: isFullWidth ? 0 : subPadding),
+          padding: EdgeInsets.symmetric(vertical: 0, horizontal: isFullWidth ? 0 : subPadding),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(

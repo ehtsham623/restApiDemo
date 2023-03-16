@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rest_api_demo/core/providers/homeProvider.dart';
 import 'package:rest_api_demo/screens/home/userListItem.dart';
+import 'package:rest_api_demo/screens/shared/drawer/mDrawer.dart';
 
 class Home extends StatefulWidget {
   static const route = 'Home';
@@ -42,6 +43,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           ),
         ),
       ),
+      drawer: const MDrawer(),
     );
   }
 }
