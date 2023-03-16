@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rest_api_demo/core/models/userModel.dart';
 
 class UserListItem extends StatelessWidget {
-  final User user;
+  final Data? user;
 
   const UserListItem({super.key, required this.user});
   @override
@@ -44,7 +44,7 @@ class UserListItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  user.firstName! + user.lastName!,
+                  user!.firstName! + user!.lastName!,
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class UserListItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  user.email!,
+                  user!.email!,
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.grey[600],
@@ -92,7 +92,7 @@ class UserListItem extends StatelessWidget {
                     Icon(Icons.public, color: Colors.grey[600], size: 20),
                     const SizedBox(width: 8),
                     Text(
-                      '${user.firstName!}@exaample.com',
+                      '${user!.firstName!}@exaample.com',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey[600],

@@ -1,18 +1,23 @@
 class UserModel {
-  User? data;
+  List<Data>? data;
   Support? support;
 
   UserModel({this.data, this.support});
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? User.fromJson(json['data']) : null;
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(Data.fromJson(v));
+      });
+    }
     support = json['support'] != null ? Support.fromJson(json['support']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
     if (this.data != null) {
-      data['data'] = this.data!.toJson();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     if (support != null) {
       data['support'] = support!.toJson();
@@ -21,16 +26,16 @@ class UserModel {
   }
 }
 
-class User {
+class Data {
   int? id;
   String? email;
   String? firstName;
   String? lastName;
   String? avatar;
 
-  User({this.id, this.email, this.firstName, this.lastName, this.avatar});
+  Data({this.id, this.email, this.firstName, this.lastName, this.avatar});
 
-  User.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     email = json['email'];
     firstName = json['first_name'];

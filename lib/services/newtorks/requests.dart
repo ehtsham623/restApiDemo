@@ -6,7 +6,7 @@ import './urls.dart';
 class Request {
   final String _url;
   final dynamic _body;
-  String token;
+  String? token;
 
   Request(this._url, this._body, this.token);
 

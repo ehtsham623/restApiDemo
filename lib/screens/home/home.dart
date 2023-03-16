@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rest_api_demo/core/models/userModel.dart';
 import 'package:rest_api_demo/core/providers/homeProvider.dart';
 import 'package:rest_api_demo/screens/home/userListItem.dart';
 import 'package:rest_api_demo/screens/shared/drawer/mDrawer.dart';
+import 'package:rest_api_demo/screens/shared/mCircularIndicator.dart';
+import 'package:rest_api_demo/screens/shared/noDataFoundWidget.dart';
 
 class Home extends StatefulWidget {
   static const route = 'Home';
@@ -15,7 +18,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {});
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      context.read<HomeProvider>().getUser(context: context);
+    });
     super.initState();
   }
 
@@ -28,17 +33,20 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           width: double.infinity,
           child: Column(
             children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: context.watch<HomeProvider>().users.length,
-                  itemBuilder: (context, index) {
-                    final user = context.watch<HomeProvider>().users[index];
-                    return UserListItem(
-                      user: user,
-                    );
-                  },
-                ),
-              ),
+              context.watch<HomeProvider>().isLoadingUser
+                  ? const MCircularIndicator()
+                  : context.watch<HomeProvider>().userModel == null
+                      ? const NoDataFoundWidget()
+                      : Expanded(
+                          child: ListView.builder(
+                            itemCount: context.watch<HomeProvider>().userModel?.data?.length,
+                            itemBuilder: (context, index) {
+                              return UserListItem(
+                                user: context.watch<HomeProvider>().userModel?.data?[index],
+                              );
+                            },
+                          ),
+                        ),
             ],
           ),
         ),
