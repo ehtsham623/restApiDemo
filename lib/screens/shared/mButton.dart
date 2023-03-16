@@ -53,10 +53,11 @@ class MButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 16, horizontal: isFullWidth ? 0 : subPadding),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(30),
-              ),
-              border: borderColor == null ? null : Border.all(color: borderColor!, width: 2)),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(30),
+            ),
+            border: borderColor == null ? null : Border.all(color: borderColor!, width: 2),
+          ),
           child: loading
               ? SizedBox(
                   width: 20,
@@ -74,7 +75,7 @@ class MButton extends StatelessWidget {
                           ? assetImage == null
                               ? Icon(
                                   iconData,
-                                  color: iconColor ?? Theme.of(context).colorScheme.primary,
+                                  color: iconColor ?? PsColors.white,
                                   size: 22,
                                 )
                               : Image.asset(
@@ -95,18 +96,22 @@ class MButton extends StatelessWidget {
                             : const EdgeInsets.all(0),
                         child: Text(
                           text,
-                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: textColor ?? PsColors.textPrimaryColor),
                         ),
                       ),
-                      isTrailing ? const SizedBox(width: subPadding) : const SizedBox.shrink(),
+                      isTrailing
+                          ? const SizedBox(
+                              width: subPadding,
+                            )
+                          : const SizedBox.shrink(),
                       isTrailing
                           ? assetImage == null
                               ? Icon(
                                   iconData,
-                                  color: iconColor ?? Theme.of(context).colorScheme.primary,
+                                  color: iconColor ?? PsColors.white,
                                   size: 22,
                                 )
                               : Image.asset(

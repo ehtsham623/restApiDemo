@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rest_api_demo/config/ps_colors.dart';
-import 'package:rest_api_demo/constants/labels.dart';
-import 'package:rest_api_demo/constants/ui_settings.dart';
+import 'package:provider/provider.dart';
+import 'package:rest_api_demo/core/providers/homeProvider.dart';
+import 'package:rest_api_demo/screens/home/userListItem.dart';
 
 class Home extends StatefulWidget {
   static const route = 'Home';
@@ -26,8 +26,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           height: double.infinity,
           width: double.infinity,
           child: Column(
-            children: const [
-              Text(Label.reqres),
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: context.watch<HomeProvider>().users.length,
+                  itemBuilder: (context, index) {
+                    final user = context.watch<HomeProvider>().users[index];
+                    return UserListItem(
+                      user: user,
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

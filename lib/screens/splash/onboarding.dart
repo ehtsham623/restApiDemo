@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rest_api_demo/config/ps_colors.dart';
+import 'package:rest_api_demo/config/ps_theme_data.dart';
 import 'package:rest_api_demo/constants/labels.dart';
 import 'package:rest_api_demo/constants/route_paths.dart';
 import 'package:rest_api_demo/constants/ui_settings.dart';
@@ -50,6 +51,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     'assets/images/reqresLogo.png',
                     height: 46,
                     width: 79,
+                    color: PsColors.mainColor,
                   ),
                 ],
               ),
@@ -99,6 +101,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         contents[currentIndex].image,
                         fit: BoxFit.contain,
                         width: 250,
+                        color: PsColors.mainDarkColor,
                       ),
                     );
                   }),
@@ -122,11 +125,14 @@ class _OnBoardingState extends State<OnBoarding> {
                   Container(
                     constraints: const BoxConstraints(maxWidth: 120),
                     child: MButton(
-                      borderColor: PsColors.primary,
+                      bgColor: PsColors.backgroundColor,
+                      textColor: PsColors.textPrimaryColor,
+                      borderColor: PsColors.borderColor,
                       text: currentIndex == contents.length - 1 ? Label.continu : "Skip",
                       onClick: () {
+                        Theme.of(context);
                         if (currentIndex == contents.length - 1) {
-                          Navigator.pushNamedAndRemoveUntil(context, RoutePaths.splash, (route) => false);
+                          Navigator.pushNamedAndRemoveUntil(context, RoutePaths.home, (route) => false);
                         }
                         controller?.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.ease);
                       },
@@ -152,17 +158,17 @@ class _OnBoardingState extends State<OnBoarding> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [PsColors.primary, PsColors.primary],
+                colors: [PsColors.mainColor!, PsColors.mainColor!],
               ),
             )
           : BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [PsColors.primary, PsColors.primary],
+                colors: [PsColors.grey!, PsColors.grey!],
               ),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: PsColors.primary, width: 1),
+              border: Border.all(color: PsColors.grey!, width: 1),
             ),
     );
   }

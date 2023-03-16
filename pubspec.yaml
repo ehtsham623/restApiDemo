@@ -9,6 +9,8 @@ environment:
   sdk: '>=2.18.6 <3.0.0'
 
 dependencies:
+  dynamic_theme:
+    path: packages/dynamic_theme
   flutter:
     sdk: flutter
   shared_preferences: ^2.0.18

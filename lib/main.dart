@@ -1,5 +1,8 @@
+import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rest_api_demo/config/ps_colors.dart';
+import 'package:rest_api_demo/config/ps_theme_data.dart';
 import 'package:rest_api_demo/config/router.dart' as router;
 import 'package:rest_api_demo/core/providers/homeProvider.dart';
 
@@ -19,20 +22,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Rest api demo',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.blue,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.blue,
-      ),
-      themeMode: ThemeMode.system,
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      onGenerateRoute: router.generateRoute,
-    );
+    PsColors.loadColor(true);
+    return DynamicTheme(
+        defaultBrightness: Brightness.light,
+        data: (Brightness brightness) {
+          if (brightness == Brightness.light) {
+            return themeData(ThemeData.light());
+          } else {
+            return themeData(ThemeData.dark());
+          }
+        },
+        themedWidgetBuilder: (BuildContext context, ThemeData theme) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Rest api demo',
+            theme: theme,
+            initialRoute: '/',
+            onGenerateRoute: router.generateRoute,
+            builder: (context, child) {
+              return MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                child: child!,
+              );
+            },
+          );
+        });
   }
 }
