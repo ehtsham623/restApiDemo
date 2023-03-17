@@ -14,17 +14,16 @@ class UserListItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: mainPadding),
           Container(
             height: 200,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
               image: DecorationImage(
                 image: NetworkImage(
-                  'https://picsum.photos/200/300',
+                  user!.avatar!,
                 ),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(10),
+                fit: BoxFit.contain,
               ),
             ),
           ),
