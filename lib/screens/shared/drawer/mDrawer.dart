@@ -12,42 +12,45 @@ class MDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: SafeArea(
-        child: Column(
-          children: [
-            Center(
-              child: Image.asset(
-                'assets/images/reqresLogo.png',
-                width: 100,
-                height: 100,
-                color: PsColors.mainColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: subPadding),
+          child: Column(
+            children: [
+              Center(
+                child: Image.asset(
+                  'assets/images/reqresLogo.png',
+                  width: 100,
+                  height: 100,
+                  color: PsColors.mainColor,
+                ),
               ),
-            ),
-            const SizedBox(height: 120),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: extraPadding),
-              child: MButton(
-                onClick: () {
-                  changeColor(context);
-                },
-                text: DynamicTheme.of(context).themeMode == ThemeMode.dark ? Label.turnLight : Label.goDrak,
-                textColor: PsColors.textPrimaryColor,
-                loading: false,
-                bgColor: PsColors.transparent,
-                borderColor: PsColors.borderColor,
+              const SizedBox(height: 120),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: extraPadding),
+                child: MButton(
+                  onClick: () {
+                    changeColor(context);
+                  },
+                  text: DynamicTheme.of(context).themeMode == ThemeMode.dark ? Label.turnLight : Label.goDrak,
+                  textColor: PsColors.textPrimaryColor,
+                  loading: false,
+                  bgColor: PsColors.transparent,
+                  borderColor: PsColors.borderColor,
+                ),
               ),
-            ),
-            const SizedBox(height: mainPadding),
-            const Spacer(),
-            Center(
-              child: Text(
-                '${Label.version} - 1.0.0',
-                style: Theme.of(context).textTheme.headline1!.copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
+              const SizedBox(height: mainPadding),
+              const Spacer(),
+              Center(
+                child: Text(
+                  '${Label.version} - 1.0.0',
+                  style: Theme.of(context).textTheme.headline1!.copyWith(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

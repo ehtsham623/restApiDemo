@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rest_api_demo/constants/labels.dart';
+import 'package:rest_api_demo/constants/ui_settings.dart';
 import 'package:rest_api_demo/core/models/userModel.dart';
 import 'package:rest_api_demo/core/providers/homeProvider.dart';
 import 'package:rest_api_demo/screens/home/userListItem.dart';
@@ -29,6 +30,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           Label.users,
           style: Theme.of(context).textTheme.bodyText1!,
@@ -41,7 +43,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           child: Column(
             children: [
               context.watch<HomeProvider>().isLoadingUser
-                  ? const MCircularIndicator()
+                  ? const Padding(
+                      padding: EdgeInsets.all(subPadding),
+                      child: MCircularIndicator(),
+                    )
                   : context.watch<HomeProvider>().userModel == null
                       ? const NoDataFoundWidget()
                       : usersListWidget(context),

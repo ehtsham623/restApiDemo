@@ -39,6 +39,7 @@ class _OnBoardingState extends State<OnBoarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           contents[currentIndex].title,
           style: Theme.of(context).textTheme.bodyText1!,
@@ -115,6 +116,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 ],
               ),
             ),
+            const SizedBox(height: mainPadding),
           ],
         ),
       ),
